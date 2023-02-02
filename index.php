@@ -10,6 +10,8 @@ Router::get('index', 'DefaultController');
 Router::get('offer', 'DefaultController');
 Router::get('signup', 'DefaultController');
 Router::get('login', 'DefaultController');
+Router::get('contact', 'DefaultController');
+Router::get('about', 'DefaultController');
 
 Router::post('log', 'SecurityController');
 

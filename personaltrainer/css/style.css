@@ -28,12 +28,13 @@ body{
 
 .login>button{
   border: none;
-  border-radius: 15px;
+  border-radius: 0.3em;
   background-color: #F2F2F2;
   font-size: 1em;
   width: 50%;
   margin-left: 0.5em;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  height: 2em;
 }
 
 .login>button>a{
@@ -43,6 +44,9 @@ body{
   text-decoration: none;
 }
 
+.login>button:hover{
+  background-color: #4CC366;
+}
 .login>i{
   font-size: 1.5em;
 }
@@ -86,7 +90,15 @@ body{
 #NavBar ul li a:hover {
   color: #4CC366;
 }
-
+#NavBar ul li a:hover::after{
+  content: "";
+  background: #4CC366;
+  width: calc((100% - 6em)/4);
+  height: 2px;
+  display: block;
+  position: absolute;
+  bottom: 0px;
+}
 #Content {
   display: flex;
   flex-direction: row;
@@ -220,15 +232,21 @@ input {
   width: calc(100% - 6em);
   font-size: 0.8em;
   margin-bottom: 1em;
+  min-height: 10em;
 }
 
 .Dane{
   text-align: center;
   margin-left: 1em;
+  height: 100%;
 }
 
 .Media{
   text-align: center;
   margin-right: 1em;
+  height: 100%;
+}
+.Media:last-child{
+  margin-bottom: 1em;
 }
 
