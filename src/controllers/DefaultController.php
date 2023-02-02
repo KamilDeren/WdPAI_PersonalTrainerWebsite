@@ -11,17 +11,17 @@ class DefaultController extends AppController {
 
     public function offer()
     {
-        $this->render('offer-view');
+        $this->render('offer');
     }
 
     public function login()
     {
-        $this->render('log-in-page');
+        $this->render('login');
     }
 
     public function signup()
     {
-        $this->render('sign-up-view');
+        $this->render('signup');
     }
 
 

@@ -5,7 +5,7 @@ require_once __DIR__ .'/../models/User.php';
 
 class SecurityController extends AppController {
 
-    public function login()
+    public function log()
     {
         $user = new User('jsnow@pk.edu.pl', 'admin', 'Johnny', 'Snow');
 
@@ -25,6 +25,6 @@ class SecurityController extends AppController {
         }
 
         $url = "http://$_SERVER[HTTP_HOST]";
-        header("Location: {$url}/projects");
+        header("Location: {$url}/index");
     }
 }
