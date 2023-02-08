@@ -12,8 +12,10 @@ Router::get('signup', 'DefaultController');
 Router::get('login', 'DefaultController');
 Router::get('contact', 'DefaultController');
 Router::get('about', 'DefaultController');
+Router::get('addtraining', 'DefaultController');
+Router::get('trainings', 'DefaultController');
 
 Router::post('log', 'SecurityController');
-
+Router::post('addTraining', 'TrainingController');
 
 Router::run($path);

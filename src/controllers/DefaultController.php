@@ -34,4 +34,12 @@ class DefaultController extends AppController {
     {
         $this->render('about');
     }
+    public function addtraining()
+    {
+        $this->render('addtraining');
+    }
+    public function trainings()
+    {
+        $this->render('trainings');
+    }
 }
