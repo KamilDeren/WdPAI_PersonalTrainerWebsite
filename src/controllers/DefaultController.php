@@ -19,9 +19,9 @@ class DefaultController extends AppController {
         $this->render('login');
     }
 
-    public function signup()
+    public function register()
     {
-        $this->render('signup');
+        $this->render('register');
     }
 
 
@@ -38,8 +38,5 @@ class DefaultController extends AppController {
     {
         $this->render('addtraining');
     }
-    public function trainings()
-    {
-        $this->render('trainings');
-    }
+
 }

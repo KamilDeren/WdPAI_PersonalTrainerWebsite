@@ -26,8 +26,8 @@
 
 <section id="LoginContener">
   <h2>Zaloguj się na swoje konto!</h2>
-  <div>
-    <form class="panel" action="log" method="POST">
+  <div class="loginDiv">
+    <form id="loginPanel" action="login" method="POST">
         <div class="messages">
             <?php
             if(isset($messages)){
@@ -41,9 +41,9 @@
         <input type="text" id="email" name="email">
         <label for="password">Hasło:</label>
         <input type="text" id="password" name="password">
-        <button id="submit" type="submit">Zaloguj się</button>
+        <input id="submit" type="submit" value="Zaloguj się">
     </form>
-    <button><a href="signup">Nie masz konta? Zarejestruj się!</a></button> <!-- można kod podmienić w JS zamiast osobnej strony -->
+    <button><a href="register">Nie masz konta? Zarejestruj się!</a></button> <!-- można kod podmienić w JS zamiast osobnej strony -->
   </div>
 </section>
 

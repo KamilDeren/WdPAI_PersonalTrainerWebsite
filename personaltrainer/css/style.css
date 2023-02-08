@@ -9,6 +9,7 @@ body{
   justify-content: center;
   align-items: center;
 }
+
 .logo{
   display: flex;
   flex-direction: row;
@@ -47,6 +48,7 @@ body{
 .login>button:hover{
   background-color: #4CC366;
 }
+
 .login>i{
   font-size: 1.5em;
 }
@@ -84,12 +86,12 @@ body{
   display: block;
   color: black;
   text-align: center;
-  text-decoration: none;
 }
 
 #NavBar ul li a:hover {
   color: #4CC366;
 }
+
 #NavBar ul li a:hover::after{
   content: "";
   background: #4CC366;
@@ -99,6 +101,7 @@ body{
   position: absolute;
   bottom: 0px;
 }
+
 #Content {
   display: flex;
   flex-direction: row;
@@ -158,49 +161,106 @@ body{
 }
 
 #LoginContener div{
-  width: 40%;
   background: #F2F2F2;
   border-radius: 10px;
+}
+
+.loginDiv{
+  width: 50%;
+}
+
+#LoginContener button {
+  background: white;
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 19px;
+  padding: 1em;
+  border: none;
+  color: black;
+  margin: 1em;
+  line-height: 1em;
+  font-size: 0.8em;
 }
 
 form{
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  padding: 20px 40px;
+  margin: 1em 0em;
+  box-sizing: border-box;
+}
+
+.input1{ grid-area: input1; }
+.input2{ grid-area: input2; }
+.input3{ grid-area: input3; }
+.input4{ grid-area: input4; }
+.input5{ grid-area: input5; }
+.input6{ grid-area: input6; }
+.input7{ grid-area: input7; }
+.input8{ grid-area: input8; }
+
+.item1 { grid-area: label1; }
+.item2 { grid-area: label2; }
+.item3 { grid-area: label3; }
+.item4 { grid-area: label4; }
+.item5 { grid-area: label5; }
+.item6 { grid-area: label6; }
+.item7 { grid-area: label7; }
+.item8 { grid-area: label8; }
+
+#registerPanel {
+  display:grid;
+  grid-template-areas:
+                      'label1 input1 label7 input7'
+                      'label2 input2 label8 input8'
+                      'label3 input3 label5 input5'
+                      'label4 input4 label6 input6';
+  grid-row-gap: 10px;
+  grid-column-gap: 1%;
+  overflow: auto;
+}
+
+.no-valid{
+  border: 3px solid red;
+  border-radius: 1em;
+  box-shadow: 0 0 0.2em red;
+  outline: none;
 }
 
 #submit {
   background: white;
   box-shadow: 0px 3px 6px #00000029;
   border-radius: 19px;
+  border: none;
+  color: black;
+  margin: 1em;
+  line-height: 1em;
+  font-size: 0.8em;
+}
 
-  width: 40%;
-  border: none;
-  color: black;
-  margin: 1em;
-  line-height: 1em;
-  font-size: 0.8em;
-}
-#LoginContener button {
-  background: white;
-  box-shadow: 0px 3px 6px #00000029;
-  border-radius: 19px;
-  padding: 2%;
-  border: none;
-  color: black;
-  margin: 1em;
-  line-height: 1em;
-  font-size: 0.8em;
-}
 
 input {
   background-color: white;
   border: 1px solid gray;
   border-radius: 10px;
   padding: 1em;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+  font-size: 20px;
+}
+
+#loginPanel input{
   margin: 1em;
   width: 50%;
+}
+
+select{
+  font-size: 0.8em;
+  padding: 1em;
+  margin: 1em;
+  border: 1px solid gray;
+  border-radius: 10px;
 }
 
 .signup-button{
@@ -219,6 +279,32 @@ input {
 
 .signup-button:hover{
   background-color: black;
+}
+
+#Trainings{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% - 6em);
+  padding: 2em 3em;
+}
+
+#Trainings table{
+  border: 2px solid black;
+}
+
+#Trainings table th{
+  border-bottom: 1px solid black;
+}
+
+#Trainings table td{
+  border-right: 1px solid black;
+  padding: 1em;
+}
+
+#Trainings table td:last-child{
+  border-right: none;
 }
 
 #FooterBar{
@@ -248,4 +334,38 @@ input {
 }
 .Media:last-child{
   margin-bottom: 1em;
+}
+a{
+  text-decoration: none;
+  color: black;
+}
+
+@media only screen
+and (max-device-width: 980px)
+{
+  body{
+    font-size: 15px;
+  }
+  #registerPanel{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 40px;
+    box-sizing: border-box;
+    row-gap: 10px;
+  }
+  input{
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 0.5em;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+  }
+  #LoginContener button{
+    font-size: 1em;
+    padding: 1em;
+    width: 50%;
+  }
 }

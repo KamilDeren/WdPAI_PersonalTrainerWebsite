@@ -29,11 +29,34 @@ class TrainingRepository extends Repository
         );
     }
 
+    public function getTrainings(): array
+    {
+        $result = [];
+
+        $stmt = $this->database->connect()->prepare('
+            SELECT title,level,date,room,name, surname FROM trainings join users on trainings.run_by = users.id_user;
+        ');
+        $stmt->execute();
+        $trainings = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($trainings as $training) {
+            $result[] = new Training(
+                $training['title'],
+                $training['level'],
+                $training['date'],
+                $training['room'],
+                $training['name'].' '.$training['surname']
+            );
+        }
+
+        return $result;
+    }
+
     public function addTraining(Training $training): void
     {
         $stmt = $this->database->connect()->prepare('
-            INSERT INTO public.Trainings(title,level,date,room,run_by) 
-            VALUES (?, ?, ?, ?, ?)
+            INSERT INTO public.Trainings(title,level,date,room,run_by,created_at) 
+            VALUES (?, ?, ?, ?, ?,?)
         ');
 
         //TODO you should get this value from logged user session
@@ -43,7 +66,8 @@ class TrainingRepository extends Repository
             $training->getLevel(),
             $training->getDate(),
             $training->getRoom(),
-            $training->getRunBy()
+            $training->getRunBy(),
+            date("Y-m-d h:m:s",time())
         ]);
     }
 }

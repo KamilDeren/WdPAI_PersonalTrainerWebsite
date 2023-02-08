@@ -14,6 +14,12 @@ class TrainingController extends AppController {
         $this->trainingRepository = new TrainingRepository();
     }
 
+    public function trainings()
+    {
+        $trainings = $this->trainingRepository->getTrainings();
+        $this->render('trainings', ['trainings' => $trainings]);
+    }
+
     public function addTraining()
     {
         if ($this->isPost()) {

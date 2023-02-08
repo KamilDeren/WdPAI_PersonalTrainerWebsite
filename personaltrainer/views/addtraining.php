@@ -11,9 +11,13 @@
 <body>
 
 <section class="header">
-  <div class="logo">
-    <h2>Tutaj bedzie logo jakies moze czy cos</h2>
-  </div>
+    <div class="logo">
+        <h2>Tutaj bedzie logo jakies moze czy cos</h2>
+        <div class="login">
+            <i class="fa-regular fa-user"></i>
+            <button><a href="login">Log In</a></button>
+        </div>
+    </div>
 </section>
 
 <section id="NavBar">
@@ -27,8 +31,8 @@
 
 <section id="LoginContener">
   <h2>Dodaj nowy trening!</h2>
-  <div>
-    <form action="addTraining" method="POST" class="panel">
+  <div class="loginDiv">
+    <form action="addTraining" method="POST" id="loginPanel">
         <label for="title">Tytuł:</label>
         <input type="text" id="title" name="title">
         <label for="level">Poziom:</label>

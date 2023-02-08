@@ -24,18 +24,26 @@
     </ul>
 </section>
 
-<section id="Content">
-  <h2>Zaloguj się na swoje konto!</h2>
-  <div>
-    <form class="panel">
-      <label for="email">Email:</label>
-      <input type="text" id="email" name="email">
-      <label for="password">Hasło:</label>
-      <input type="text" id="password" name="password">
-      <input id="submit" type="submit" value="Zaloguj się">
-    </form>
-    <button><a href="signup">Nie masz konta? Zarejestruj się!</a></button> <!-- można kod podmienić w JS zamiast osobnej strony -->
-  </div>
+<section id="Trainings">
+    <table>
+        <tr>
+            <th>Tytuł</th>
+            <th>Poziom</th>
+            <th>Godzina</th>
+            <th>Gdzie</th>
+            <th>Trener</th>
+        </tr>
+        <?php foreach($trainings as $training): ?>
+            <tr>
+                <td><?= $training->getTitle() ?></td>
+                <td><?= $training->getLevel() ?></td>
+                <td><?= $training->getDate() ?></td>
+                <td><?= $training->getRoom() ?></td>
+                <td><?= $training->getRunby() ?></td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+
 </section>
 
 <section id="FooterBar">
