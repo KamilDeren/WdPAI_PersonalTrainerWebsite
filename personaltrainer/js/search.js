@@ -1,5 +1,6 @@
 const search = document.querySelector('input[placeholder="Wyszukaj trening"]');
 const trainingsSearch = document.querySelector(".selector");
+const tableHeader = "<tr><th>Tytuł</th><th>Poziom</th><th>Godzina</th><th>Gdzie</th><th>Trener</th><th>Zapisz się!</th></tr>";
 
 search.addEventListener("keyup", function (event) {
     if (event.key === "Enter") {
@@ -16,7 +17,7 @@ search.addEventListener("keyup", function (event) {
         }).then(function (response) {
             return response.json();
         }).then(function (trainings) {
-            trainingsSearch.innerHTML = "";
+            trainingsSearch.innerHTML = tableHeader;
             loadTrainings(trainings)
         });
     }

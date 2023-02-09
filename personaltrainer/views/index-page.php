@@ -1,7 +1,4 @@
-<?php
-session_start();
-echo var_dump($_SESSION['id'])
-?>
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html lang="english">
@@ -11,6 +8,7 @@ echo var_dump($_SESSION['id'])
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta charset="utf-8"/>
     <link rel="stylesheet" href="personaltrainer/css/style.css"/>
+    <script type="text/javascript" src="personaltrainer/js/scriptfornav.js" defer></script>
 </head>
 <body>
 
@@ -25,18 +23,28 @@ echo var_dump($_SESSION['id'])
 
             <?php if (!empty($_SESSION['id'])) { ?>
                 <button><a href="myaccount">Moje konto</a></button>
+                <button><a href="logout">Wyloguj się</a></button>
             <?php } ?>
         </div>
     </div>
 </section>
 
 <section id="NavBar">
-    <ul>
-        <li><a href="index">Strona Główna</a></li>
-        <li><a href="contact">Kontakt</a></li>
-        <li><a href="about">O mnie</a></li>
-        <li><a href="offer">Oferta</a></li>
-    </ul>
+    <?php if (empty($_SESSION['id'])) { ?> <ul id="regular"> <?php } ?>
+        <?php if (!empty($_SESSION['id']) and (int)$_SESSION['id']!==1) { ?> <ul id="afterLoginNav1"> <?php } ?>
+            <?php if (!empty($_SESSION['id']) and (int)$_SESSION['id']==1) { ?> <ul id="afterLoginNav2"><?php } ?>
+
+                <li><a href="index">Strona Główna</a></li>
+                <li><a href="contact">Kontakt</a></li>
+                <li><a href="about">O mnie</a></li>
+                <li><a href="offer">Oferta</a></li>
+                <?php if (!empty($_SESSION['id'])) { ?>
+                    <li><a href="trainings">Treningi</a></li>
+                <?php } ?>
+                <?php if (!empty($_SESSION['id']) and (int)$_SESSION['id']==1) { ?>
+                    <li><a href="trainings">Dodaj trening</a></li>
+                <?php } ?>
+            </ul>
 </section>
 
 <section id="Content">

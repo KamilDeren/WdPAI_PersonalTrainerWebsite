@@ -13,6 +13,13 @@ class SecurityController extends AppController {
         parent::__construct();
         $this->userRepository = new UserRepository();
     }
+
+    public function myaccount()
+    {
+        $myuser = $this->userRepository->getUserById(3);
+        $this->render('myaccount', ['myaccount' => $myuser]);
+    }
+
     public function login()
     {
         session_start();
@@ -39,11 +46,18 @@ class SecurityController extends AppController {
             return $this->render('login-page', ['messages' => ['Wrong email!']]);
         }
 
-        if ($user->getPassword() !== $password) {
+        if ($user->getPassword() !== md5($password)) {
             return $this->render('login-page', ['messages' => ['Wrong password!']]);
         }
 
         $_SESSION['id'] = $user->getId();
+        return $this->render('index-page');
+    }
+
+    public function logout(){
+        session_start();
+        unset($_SESSION["id"]);
+        unset($_SESSION["name"]);
         return $this->render('index-page');
     }
 
@@ -66,7 +80,6 @@ class SecurityController extends AppController {
             return $this->render('register-page', ['messages' => ['Please provide proper password']]);
         }
 
-        //TODO try to use better hash function
         $user = new User($email, md5($password), $name, $surname, $city, $sex, $phone);
 
         $this->userRepository->addUser($user);

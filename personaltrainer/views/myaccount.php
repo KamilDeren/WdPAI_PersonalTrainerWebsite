@@ -3,12 +3,13 @@
 <!DOCTYPE html>
 <html lang="english">
 <head>
-    <title>Treningi</title>
+    <title>Moje konto</title>
     <script src="https://kit.fontawesome.com/5dc99e0e66.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta charset="utf-8"/>
     <link rel="stylesheet" href="personaltrainer/css/style.css"/>
-    <script type="text/javascript" src="personaltrainer/js/search.js" defer></script>
+    <script type="text/javascript" src="personaltrainer/js/changeaccountdetails.js" defer></script>
+    <script type="text/javascript" src="personaltrainer/js/script.js" defer></script>
 
 </head>
 <body>
@@ -21,6 +22,7 @@
             <button><a href="myaccount">Moje konto</a></button>
         </div>
     </div>
+
 </section>
 
 <section id="NavBar">
@@ -36,38 +38,46 @@
                     <li><a href="trainings">Treningi</a></li>
                 <?php } ?>
                 <?php if (!empty($_SESSION['id']) and (int)$_SESSION['id']==1) { ?>
-                    <li><a href="addtraining">Dodaj trening</a></li>
+                    <li><a href="trainings">Dodaj trening</a></li>
                 <?php } ?>
             </ul>
 </section>
 
-<section id="Trainings">
-    <div class="search-bar">
-        <input placeholder="Wyszukaj trening">
+<section id="Content">
+    <div class="myacc">
+        <div class='myacc-row'>
+            <h2>Twoje dane</h2>
+        </div>
+        <div class='myacc-row'>
+            <div class='myacc-column'>
+                <div class='myacc-column-left'>
+                    <input type="text" id="name" name="name" placeholder="Imie: <?= $myaccount->getName() ?>" disabled>
+                    <input type="text" id="name" name="name" placeholder="Nazwisko: <?= $myaccount->getSurname() ?>" disabled>
+                    <input type="text" id="name" name="name" placeholder="Email: <?= $myaccount->getEmail() ?>" disabled>
+                    <input type="text" id="name" name="name" placeholder="Numer telefonu: <?= $myaccount->getPhoneNumber() ?>" disabled>
+                    <input type="text" id="name" name="name" placeholder="Płeć: <?= $myaccount->getSex() ?>" disabled>
+                </div>
+            </div>
+            <div class='myacc-column'>
+                <div class='myacc-column-right'>
+                    <img src="" alt="brak">
+                    <button>Dodaj/zmień zdjęcie</button>
+                </div>
+            </div>
+        </div>
+        <div class='myacc-row'>
+            <div class='myacc-column'>
+                <div class='myacc-column-right'>
+                    <button id="changeData">Zmień swoje dane</button>
+                </div>
+            </div>
+            <div class='myacc-column'>
+                <div class='myacc-column-right'>
+                    <button id="changePassword">Zmień hasło</button>
+                </div>
+            </div>
+        </div>
     </div>
-    <h2>Treningi w następnym tygodniu
-        od <?php echo date("Y-m-d", time()) . ' do ' . date("Y-m-d", time() + 604800) ?></h2>
-    <table class="selector">
-        <tr>
-            <th>Tytuł</th>
-            <th>Poziom</th>
-            <th>Godzina</th>
-            <th>Gdzie</th>
-            <th>Trener</th>
-            <th>Zapisz się!</th>
-        </tr>
-        <?php foreach ($trainings as $training): ?>
-            <tr>
-                <td><?= $training->getTitle() ?></td>
-                <td><?= $training->getLevel() ?></td>
-                <td><?= $training->getDate() ?></td>
-                <td><?= $training->getRoom() ?></td>
-                <td><?= $training->getRunby() ?></td>
-                <td><button>Zapisz</button></td> <!--TODO gdy sesja uzytkownika dodaj zapisywanie-->
-            </tr>
-        <?php endforeach; ?>
-    </table>
-
 </section>
 
 <section id="FooterBar">
@@ -88,14 +98,3 @@
 
 </body>
 </html>
-
-<template id="training-template">
-    <tr>
-        <td>Title</td>
-        <td>Level</td>
-        <td>Date</td>
-        <td>Room</td>
-        <td>Run by</td>
-        <td><button>Zapisz</button></td>
-    </tr>
-</template>

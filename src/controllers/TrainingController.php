@@ -17,7 +17,7 @@ class TrainingController extends AppController {
     public function trainings()
     {
         $trainings = $this->trainingRepository->getTrainings();
-        $this->render('trainings', ['trainings' => $trainings]);
+        $this->render('trainings-page', ['trainings' => $trainings]);
     }
 
     public function addTraining()
@@ -26,9 +26,9 @@ class TrainingController extends AppController {
             $training = new Training($_POST['title'], $_POST['level'], $_POST['date'], $_POST['room'], $_POST['run_by']);
             $this->trainingRepository->addTraining($training);
 
-            return $this->render('addtraining', ['messages' => $this->message]);
+            return $this->render('addtraining-page', ['messages' => $this->message]);
         }
-        return $this->render('addtraining', ['messages' => $this->message]);
+        return $this->render('addtraining-page', ['messages' => $this->message]);
     }
 
     public function search(){
