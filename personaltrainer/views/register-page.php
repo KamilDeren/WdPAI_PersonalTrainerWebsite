@@ -1,11 +1,13 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="english">
 <head>
-    <title>Treningi</title>
+    <title>Rejestracja</title>
     <script src="https://kit.fontawesome.com/5dc99e0e66.js" crossorigin="anonymous"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="personaltrainer/css/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="personaltrainer/css/style.css"/>
     <script type="text/javascript" src="personaltrainer/js/script.js" defer></script>
 </head>
 <body>
@@ -35,31 +37,38 @@
         <form id="registerPanel" action="register" method="POST">
             <!--<div class="messages">
                 <?php
-                if(isset($messages)){
-                    foreach($messages as $message) {
-                        echo $message;
-                    }
+            if (isset($messages)) {
+                foreach ($messages as $message) {
+                    echo $message;
                 }
-                ?>
+            }
+            ?>
             </div>-->
             <label for="name" class="item1">Imie</label>
             <input type="text" id="name" name="name" class="input1">
-            <label for="email" class="item3">Email</label>
-            <input type="text" id="email" name="email" class="input3">
+
             <label for="surname" class="item2">Nazwisko</label>
             <input type="text" id="surname" name="surname" class="input2">
+
+            <label for="email" class="item3">Email</label>
+            <input type="text" id="email" name="email" class="input3">
+
             <label for="password" class="item7">Hasło</label>
             <input type="text" id="password" name="password" class="input7">
+
             <label for="rpassword" class="item8">Powtórz hasło</label>
             <input type="text" id="rpassword" name="rpassword" class="input8">
+
             <label for="city" class="item4">Miasto</label>
             <input type="text" id="city" name="city" class="input4">
+
             <label for="phone_number" class="item5">Nr telefonu</label>
             <input type="text" id="phone_number" name="phone_number" class="input5">
+
             <label for="sex" class="item6">Płeć</label>
             <input type="text" id="sex" name="sex" class="input6">
         </form>
-        <button id="submit" type="submit" form="panel"><b>Zarejestruj się</b></button>
+        <button id="submit" type="submit" form="registerPanel"><b>Zarejestruj się</b></button>
     </div>
 </section>
 

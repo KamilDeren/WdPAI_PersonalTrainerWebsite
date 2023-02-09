@@ -9,7 +9,14 @@ class UserRepository extends Repository
     public function getUser(string $email): User
     {
         $stmt = $this->database->connect()->prepare('
-            SELECT name,surname,email,password,city_name,phone_number,sex
+            SELECT id_user,
+                   name,
+                   surname,
+                   email,
+                   password,
+                   city_name,
+                   phone_number,
+                   sex
             FROM public.user_details
             JOIN public.users ON public.users.id_user_details = public.user_details.id_user_details
             JOIN public.cities ON public.cities.id_city = public.user_details.city
@@ -30,9 +37,10 @@ class UserRepository extends Repository
             $user['password'],
             $user['name'],
             $user['surname'],
-            $user['city'],
+            $user['city_name'],
             $user['sex'],
-            $user['phone_number']
+            $user['phone_number'],
+            $user['id_user']
         );
     }
 

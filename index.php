@@ -12,10 +12,11 @@ Router::get('register', 'DefaultController');
 Router::get('login', 'DefaultController');
 Router::get('contact', 'DefaultController');
 Router::get('about', 'DefaultController');
+Router::get('myaccount', 'DefaultController');
 Router::get('addtraining', 'DefaultController');
 Router::get('trainings', 'TrainingController');
-Router::post('search', 'TrainingController');
 
+Router::post('search', 'TrainingController');
 Router::post('login', 'SecurityController');
 Router::post('register', 'SecurityController');
 Router::post('addTraining', 'TrainingController');

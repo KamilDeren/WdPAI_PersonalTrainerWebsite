@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="english">
 <head>
@@ -30,7 +34,6 @@
     <form id="loginPanel" action="login" method="POST">
         <div class="messages">
             <?php
-            var_dump($user);
             if(isset($messages)){
                 foreach($messages as $message) {
                     echo $message;
@@ -44,7 +47,7 @@
         <input type="text" id="password" name="password">
         <input id="submit" type="submit" value="Zaloguj się">
     </form>
-    <button><a href="register">Nie masz konta? Zarejestruj się!</a></button> <!-- można kod podmienić w JS zamiast osobnej strony -->
+    <button><a href="register">Nie masz konta? Zarejestruj się!</a></button>
   </div>
 </section>
 

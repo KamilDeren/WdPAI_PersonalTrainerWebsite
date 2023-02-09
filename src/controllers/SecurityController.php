@@ -15,10 +15,11 @@ class SecurityController extends AppController {
     }
     public function login()
     {
+        session_start();
         $userRepository = new UserRepository();
 
         if (!$this->isPost()) {
-            return $this->render('login');
+            return $this->render('login-page');
         }
 
         $email = $_POST['email'];
@@ -27,28 +28,29 @@ class SecurityController extends AppController {
             $user = $userRepository->getUser($email);
         }
         catch (Exception $e){
-            return $this->render('login', ['messages' => ['User with this email not exist!']]);
+            return $this->render('login-page', ['messages' => ['User with this email not exist!']]);
         }
 
         if (!$user) {
-            return $this->render('login', ['messages' => ['User not found!']]);
+            return $this->render('login-page', ['messages' => ['User not found!']]);
         }
 
         if ($user->getEmail() !== $email) {
-            return $this->render('login', ['messages' => ['User with this email not exist!']]);
+            return $this->render('login-page', ['messages' => ['Wrong email!']]);
         }
 
         if ($user->getPassword() !== $password) {
-            return $this->render('login', ['messages' => ['Wrong password!']]);
+            return $this->render('login-page', ['messages' => ['Wrong password!']]);
         }
 
-        return $this->render('addtraining');
+        $_SESSION['id'] = $user->getId();
+        return $this->render('index-page');
     }
 
     public function register()
     {
         if (!$this->isPost()) {
-            return $this->render('register');
+            return $this->render('register-page');
         }
 
         $email = $_POST['email'];
@@ -61,7 +63,7 @@ class SecurityController extends AppController {
         $city = $_POST['city'];
 
         if ($password !== $confirmedPassword) {
-            return $this->render('register', ['messages' => ['Please provide proper password']]);
+            return $this->render('register-page', ['messages' => ['Please provide proper password']]);
         }
 
         //TODO try to use better hash function
@@ -69,6 +71,6 @@ class SecurityController extends AppController {
 
         $this->userRepository->addUser($user);
 
-        return $this->render('login', ['messages' => ['You\'ve been succesfully registrated!']]);
+        return $this->render('login-page', ['messages' => ['You\'ve been succesfully registrated!']]);
     }
 }

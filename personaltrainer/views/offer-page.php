@@ -1,23 +1,30 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="english">
 <head>
-    <title>Kontakt</title>
+    <title>Oferta</title>
     <script src="https://kit.fontawesome.com/5dc99e0e66.js" crossorigin="anonymous"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="personaltrainer/css/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="personaltrainer/css/style.css"/>
 </head>
-<body>
 
+<body>
 <section class="header">
     <div class="logo">
         <h2>Tutaj bedzie logo jakies moze czy cos</h2>
         <div class="login">
             <i class="fa-regular fa-user"></i>
-            <button><a href="login">Log In</a></button>
+            <?php if (empty($_SESSION['id'])) { ?>
+                <button><a href="login">Log In</a></button>
+            <?php } ?>
+
+            <?php if (!empty($_SESSION['id'])) { ?>
+                <button><a href="myaccount">Moje konto</a></button>
+            <?php } ?>
         </div>
     </div>
-
 </section>
 
 <section id="NavBar">
@@ -31,17 +38,19 @@
 
 <section id="OfferContent">
     <div>
-        <h2>Skontaktuj się ze mną!</h2>
-        <h4>Możesz mnie znaleźć na:</h4>
+        <h2>Nasza Oferta</h2>
+        <h4>PIERWSZY TRENING ZAPOZNAWCZY ZA DARMO!</h4>
+        <p>Oferujemy:</p>
         <p>
-            Instagram: <a href="#">link.in</a>
-            <br> Youtube: <a href="#">link.yt</a>
-            <br> Twitch: <a href="#">link.tw</a>
-            <br> Facebook: <a href="#">link.fb</a>
+            Ciągłą motywację
+            <br> Indywidualne podejście
+            <br> Korekcję wzorca ruchowego
+            <br> Ukierunkowanie treningu pod dany cel i konkretną dyscyplinę sportową
         </p>
-        <p>Oraz także poprzez maila: sample@gmail.com</p>
-        <p>Telefon: 123456789</p>
+        <p>Cena zależna od ilości treningów w wybranym pakiecie</p>
     </div>
+
+    <button><a href="register">Zapisz się już teraz</a></button>
 </section>
 
 <section id="FooterBar">

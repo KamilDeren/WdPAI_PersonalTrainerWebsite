@@ -21,7 +21,7 @@ class AppController {
     protected function render(string $template = null, array $variables = [])
     {
         $templatePath = 'personaltrainer/views/'. $template.'.php';
-        $output = 'File not found';
+        $output = $template.'File not found';
 
         if(file_exists($templatePath)){
             extract($variables);

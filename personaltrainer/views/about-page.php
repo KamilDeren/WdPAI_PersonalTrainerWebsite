@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="english">
 <head>
@@ -14,7 +16,13 @@
         <h2>Tutaj bedzie logo jakies moze czy cos</h2>
         <div class="login">
             <i class="fa-regular fa-user"></i>
-            <button><a href="login">Log In</a></button>
+            <?php if(empty($_SESSION['id'])){?>
+                <button><a href="login">Log In</a></button>
+            <?php }?>
+
+            <?php if(!empty($_SESSION['id'])){?>
+                <button><a href="myaccount">Moje konto</a></button>
+            <?php }?>
         </div>
     </div>
 
