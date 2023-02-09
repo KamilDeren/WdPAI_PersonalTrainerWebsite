@@ -34,9 +34,15 @@ class TrainingRepository extends Repository
         $result = [];
 
         $stmt = $this->database->connect()->prepare('
-            SELECT title,level,date,room,name, surname FROM trainings join users on trainings.run_by = users.id_user;
+            SELECT title, level, date, room, name, surname 
+            FROM trainings 
+            JOIN users ON trainings.run_by = users.id_user
+            WHERE date between ? and ?;
         ');
-        $stmt->execute();
+        $stmt->execute([
+            date("Y-m-d h:m:s",time()),
+            date("Y-m-d h:m:s",time()+604800)
+        ]);
         $trainings = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         foreach ($trainings as $training) {

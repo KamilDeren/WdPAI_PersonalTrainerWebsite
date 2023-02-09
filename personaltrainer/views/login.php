@@ -30,6 +30,7 @@
     <form id="loginPanel" action="login" method="POST">
         <div class="messages">
             <?php
+            var_dump($user);
             if(isset($messages)){
                 foreach($messages as $message) {
                     echo $message;

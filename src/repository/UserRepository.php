@@ -9,7 +9,11 @@ class UserRepository extends Repository
     public function getUser(string $email): User
     {
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM public.users WHERE email = :email
+            SELECT name,surname,email,password,city_name,phone_number,sex
+            FROM public.user_details
+            JOIN public.users ON public.users.id_user_details = public.user_details.id_user_details
+            JOIN public.cities ON public.cities.id_city = public.user_details.city
+            WHERE email = :email
         ');
         $stmt->bindParam(':email', $email, PDO::PARAM_STR);
         $stmt->execute();
@@ -19,6 +23,7 @@ class UserRepository extends Repository
         if ($user == false) {
             throw new Exception('User with that email doesn\'t exist');
         }
+
 
         return new User(
             $user['email'],
