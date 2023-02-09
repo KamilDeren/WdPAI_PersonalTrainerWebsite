@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta charset="utf-8" />
   <link rel="stylesheet" href="personaltrainer/css/style.css" />
+  <script type="text/javascript" src="personaltrainer/js/search.js" defer></script>
+
 </head>
 <body>
 
@@ -25,13 +27,18 @@
 </section>
 
 <section id="Trainings">
-    <table>
+    <div class="search-bar">
+        <input placeholder="Wyszukaj trening">
+    </div>
+    <h2>Treningi w następnym tygodniu od <?php echo date("Y-m-d",time()).' do '.date("Y-m-d",time()+604800)?></h2>
+    <table class="selector">
         <tr>
             <th>Tytuł</th>
             <th>Poziom</th>
             <th>Godzina</th>
             <th>Gdzie</th>
             <th>Trener</th>
+            <th>Zapisz się!</th>
         </tr>
         <?php foreach($trainings as $training): ?>
             <tr>
@@ -40,6 +47,7 @@
                 <td><?= $training->getDate() ?></td>
                 <td><?= $training->getRoom() ?></td>
                 <td><?= $training->getRunby() ?></td>
+                <td><button>Zapisz</button></td> <!--TODO gdy sesja uzytkownika dodaj zapisywanie-->
             </tr>
         <?php endforeach; ?>
     </table>
@@ -64,3 +72,14 @@
 
 </body>
 </html>
+
+<template id="training-template">
+    <tr>
+        <td>Title</td>
+        <td>Level</td>
+        <td>Date</td>
+        <td>Room</td>
+        <td>Run by/td>
+        <td><button>Zapisz</button></td>
+    </tr>
+</template>

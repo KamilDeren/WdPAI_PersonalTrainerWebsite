@@ -283,7 +283,7 @@ select{
 
 #Trainings{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: calc(100% - 6em);

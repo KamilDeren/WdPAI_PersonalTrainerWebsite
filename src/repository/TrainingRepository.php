@@ -58,14 +58,27 @@ class TrainingRepository extends Repository
         return $result;
     }
 
+    public function getTrainingsByTitleOrRunby(string $searchString){
+        $searchString = '%' . trim(strtolower($searchString)) . '%';
+
+        $stmt = $this->database->connect()->prepare("
+            SELECT title, level, date, room, CONCAT(name,' ',surname) as run_by
+            FROM trainings
+            JOIN users ON trainings.run_by = users.id_user
+            WHERE LOWER(title) LIKE :search OR LOWER(CONCAT(name,' ',surname)) LIKE :search;
+        ");
+        $stmt->bindParam(':search', $searchString, PDO::PARAM_STR);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function addTraining(Training $training): void
     {
         $stmt = $this->database->connect()->prepare('
             INSERT INTO public.Trainings(title,level,date,room,run_by,created_at) 
             VALUES (?, ?, ?, ?, ?,?)
         ');
-
-        //TODO you should get this value from logged user session
 
         $stmt->execute([
             $training->getTitle(),

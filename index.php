@@ -14,6 +14,7 @@ Router::get('contact', 'DefaultController');
 Router::get('about', 'DefaultController');
 Router::get('addtraining', 'DefaultController');
 Router::get('trainings', 'TrainingController');
+Router::post('search', 'TrainingController');
 
 Router::post('login', 'SecurityController');
 Router::post('register', 'SecurityController');
