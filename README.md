@@ -39,10 +39,10 @@ There are various things that you can do there.
 
 ## Screenshots
 
-![Example screenshot](./screenshots/1.png)
-![Example screenshot](./screenshots/2.png)
-![Example screenshot](./screenshots/3.png)
-![Example screenshot](./screenshots/4.png)
+![Example screenshot](./screenshots/1.PNG)
+![Example screenshot](./screenshots/2.PNG)
+![Example screenshot](./screenshots/3.PNG)
+![Example screenshot](./screenshots/4.PNG)
 
 ## Launch
 
