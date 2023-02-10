@@ -44,6 +44,10 @@ There are various things that you can do there.
 ![Example screenshot](./screenshots/3.PNG)
 ![Example screenshot](./screenshots/4.PNG)
 
+![Example screenshot](./screenshots/1-mobile.PNG)
+![Example screenshot](./screenshots/2-mobile.PNG)
+![Example screenshot](./screenshots/3-mobile.PNG)
+![Example screenshot](./screenshots/4-mobile.PNG)
 ## Launch
 
 To run this project you need to have Docker app and some IDE like visual studio code or webstorm. 
