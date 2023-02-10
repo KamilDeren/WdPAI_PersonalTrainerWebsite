@@ -43,7 +43,7 @@
                     <li><a href="trainings">Treningi</a></li>
                 <?php } ?>
                 <?php if (!empty($_SESSION['id']) and (int)$_SESSION['id'] == 1) { ?>
-                    <li><a href="trainings">Dodaj trening</a></li>
+                    <li><a href="addtrainings">Dodaj trening</a></li>
                 <?php } ?>
             </ul>
 </section>
