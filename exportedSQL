@@ -1,0 +1,139 @@
+create sequence "Users_id_seq"
+    as integer;
+
+alter sequence "Users_id_seq" owner to super_admin;
+
+create sequence "User_details_id_user_details_seq"
+    as integer;
+
+alter sequence "User_details_id_user_details_seq" owner to super_admin;
+
+create sequence "Cities_id_city_seq"
+    as integer;
+
+alter sequence "Cities_id_city_seq" owner to super_admin;
+
+create sequence "Trainings_id_training_seq"
+    as integer;
+
+alter sequence "Trainings_id_training_seq" owner to super_admin;
+
+create sequence "User_roles_id_role_seq"
+    as integer;
+
+alter sequence "User_roles_id_role_seq" owner to super_admin;
+
+create table cities
+(
+    id_city     integer default nextval('"Cities_id_city_seq"'::regclass) not null
+        constraint "Cities_pkey"
+            primary key,
+    city_name   varchar(255)                                              not null,
+    city_region varchar(255)
+);
+
+alter table cities
+    owner to super_admin;
+
+alter sequence "Cities_id_city_seq" owned by cities.id_city;
+
+create table user_details
+(
+    id_user_details integer default nextval('"User_details_id_user_details_seq"'::regclass) not null
+        constraint "User_details_pkey"
+            primary key,
+    city            integer                                                                 not null
+        constraint "User_details_Cities__fk"
+            references cities
+            on update cascade on delete cascade,
+    phone_number    integer                                                                 not null
+        unique,
+    sex             varchar(10),
+    created_at      date                                                                    not null,
+    image           varchar(255)
+);
+
+alter table user_details
+    owner to super_admin;
+
+alter sequence "User_details_id_user_details_seq" owned by user_details.id_user_details;
+
+create table user_roles
+(
+    id_role   integer default nextval('"User_roles_id_role_seq"'::regclass) not null
+        constraint "User_roles_pkey"
+            primary key,
+    role_name varchar(255)                                                  not null
+        constraint "User_roles_role_name_key"
+            unique
+);
+
+alter table user_roles
+    owner to super_admin;
+
+alter sequence "User_roles_id_role_seq" owned by user_roles.id_role;
+
+create table users
+(
+    id_user         integer default nextval('"Users_id_seq"'::regclass) not null
+        constraint "Users_pk"
+            primary key
+        constraint "Users_id_key"
+            unique,
+    name            varchar(100)                                        not null,
+    surname         varchar(100)                                        not null,
+    email           varchar(255)                                        not null
+        constraint "Users_email_key"
+            unique,
+    password        varchar(255)                                        not null,
+    id_user_details integer                                             not null
+        constraint "Users_User_Details_key"
+            references user_details
+            on update cascade on delete cascade,
+    user_role       integer                                             not null
+        constraint "Users_Users_roles_fk"
+            references user_roles
+            on update cascade on delete cascade
+);
+
+alter table users
+    owner to super_admin;
+
+alter sequence "Users_id_seq" owned by users.id_user;
+
+create table trainings
+(
+    id_training integer default nextval('"Trainings_id_training_seq"'::regclass) not null
+        constraint "Trainings_pkey"
+            primary key,
+    title       varchar(255)                                                     not null,
+    level       varchar(50)                                                      not null,
+    date        timestamp                                                        not null,
+    room        varchar(100),
+    run_by      integer                                                          not null
+        constraint "Trainings_Users__fk"
+            references users
+            on update cascade on delete cascade,
+    created_at  timestamp
+);
+
+alter table trainings
+    owner to super_admin;
+
+alter sequence "Trainings_id_training_seq" owned by trainings.id_training;
+
+create table user_trainings
+(
+    id_user     integer not null
+        constraint "User_Trainings_Users__fk"
+            references users
+            on update cascade on delete cascade,
+    id_training integer not null
+        constraint "User_Trainings_Trainings__fk"
+            references trainings
+            on update cascade on delete cascade
+);
+
+alter table user_trainings
+    owner to super_admin;
+
