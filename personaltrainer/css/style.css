@@ -315,8 +315,19 @@ input {
   line-height: 1em;
   font-size: 0.8em;
 }
+.selector tr td:last-child{
+  display: flex;
+  justify-content: center;
+}
 
-
+#signUpWithdrawButton{
+  width: 50%;
+  height: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 #loginPanel input{
   margin: 1em;
