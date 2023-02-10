@@ -5,15 +5,14 @@
 <head>
     <title>Kontakt</title>
     <script src="https://kit.fontawesome.com/5dc99e0e66.js" crossorigin="anonymous"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="personaltrainer/css/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="personaltrainer/css/style.css"/>
 </head>
 <body>
 
 <section class="header">
     <div class="logo">
-        <h2>Tutaj bedzie logo jakies moze czy cos</h2>
         <div class="login">
             <i class="fa-regular fa-user"></i>
             <?php if (empty($_SESSION['id'])) { ?>
@@ -29,9 +28,12 @@
 </section>
 
 <section id="NavBar">
-    <?php if (empty($_SESSION['id'])) { ?> <ul id="regular"> <?php } ?>
-        <?php if (!empty($_SESSION['id']) and (int)$_SESSION['id']!==1) { ?> <ul id="afterLoginNav1"> <?php } ?>
-            <?php if (!empty($_SESSION['id']) and (int)$_SESSION['id']==1) { ?> <ul id="afterLoginNav2"><?php } ?>
+    <?php if (empty($_SESSION['id'])) { ?>
+    <ul id="regular"> <?php } ?>
+        <?php if (!empty($_SESSION['id']) and (int)$_SESSION['id'] !== 1) { ?>
+        <ul id="afterLoginNav1"> <?php } ?>
+            <?php if (!empty($_SESSION['id']) and (int)$_SESSION['id'] == 1) { ?>
+            <ul id="afterLoginNav2"><?php } ?>
 
                 <li><a href="index">Strona Główna</a></li>
                 <li><a href="contact">Kontakt</a></li>
@@ -40,24 +42,27 @@
                 <?php if (!empty($_SESSION['id'])) { ?>
                     <li><a href="trainings">Treningi</a></li>
                 <?php } ?>
-                <?php if (!empty($_SESSION['id']) and (int)$_SESSION['id']==1) { ?>
+                <?php if (!empty($_SESSION['id']) and (int)$_SESSION['id'] == 1) { ?>
                     <li><a href="trainings">Dodaj trening</a></li>
                 <?php } ?>
             </ul>
 </section>
 
 <section id="OfferContent">
-    <div>
+    <div class="myacc-column">
         <h2>Skontaktuj się ze mną!</h2>
         <h4>Możesz mnie znaleźć na:</h4>
         <p>
-            Instagram: <a href="#">link.in</a>
-            <br> Youtube: <a href="#">link.yt</a>
-            <br> Twitch: <a href="#">link.tw</a>
-            <br> Facebook: <a href="#">link.fb</a>
+            Instagram: <a href="">link.in</a>
+            <br> Youtube: <a href="">link.yt</a>
+            <br> Twitch: <a href="">link.tw</a>
+            <br> Facebook: <a href="">link.fb</a>
         </p>
         <p>Oraz także poprzez maila: sample@gmail.com</p>
         <p>Telefon: 123456789</p>
+    </div>
+    <div class="myacc-column">
+        <img src="/personaltrainer/img/contactimg.svg">
     </div>
 </section>
 
@@ -70,10 +75,10 @@
 
     <div class="Media">
         <p>Media Społecznościowe</p>
-        <i class="fa-brands fa-instagram"></i> instagram.in </br>
-        <i class="fa-brands fa-facebook"></i> facebook.fb </br>
-        <i class="fa-brands fa-youtube"></i> youtube.yt </br>
-        <i class="fa-brands fa-twitch"></i> twitch.tv </br>
+        <i class="fa-brands fa-instagram"></i> <a href="">instagram.in</a> </br>
+        <i class="fa-brands fa-facebook"></i> <a href="">facebook.fb </a></br>
+        <i class="fa-brands fa-youtube"></i> <a href="">youtube.yt</a> </br>
+        <i class="fa-brands fa-twitch"></i> <a href="">twitch.tv</a> </br>
     </div>
 </section>
 

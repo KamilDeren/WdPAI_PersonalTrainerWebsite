@@ -16,7 +16,8 @@ class SecurityController extends AppController {
 
     public function myaccount()
     {
-        $myuser = $this->userRepository->getUserById(3);
+        session_start();
+        $myuser = $this->userRepository->getUserById($_SESSION['id']);
         $this->render('myaccount', ['myaccount' => $myuser]);
     }
 

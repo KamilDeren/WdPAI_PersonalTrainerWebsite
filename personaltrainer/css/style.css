@@ -47,15 +47,27 @@ input {
   flex-direction: row;
   align-items: center;
   width: 100%;
-  justify-content: space-between;
-  margin: 0em 3em;
+  justify-content: flex-end;
+  height: 15em;
+  overflow: hidden;
+  background-image: url("/personaltrainer/img/header.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.logo img {
+  width: 80%;
+  object-fit: contain;
+  object-position: center bottom;
 }
 
 .login{
+  width: 20%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  row-gap: 1em;
 }
 
 .login>button{
@@ -163,15 +175,17 @@ input {
 
 #OfferContent {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   width: calc(100% - 6em);
-  padding: 0em 3em;
+  padding: 1em 3em;
   text-align: center;
 }
 
 #OfferContent button{
+  display: flex;
+  flex-direction: column;
   border: none;
   border-radius: 15px;
   background-color: #F2F2F2;
@@ -185,8 +199,12 @@ input {
 #OfferContent button a{
   display: block;
   color: black;
-  text-align: center;
+  margin: auto;
   text-decoration: none;
+}
+
+#OfferContent img{
+  width: 100%;
 }
 
 .content-left{
@@ -197,7 +215,10 @@ input {
 .content-right{
   width: 50%;
   text-align: center;
+}
 
+.content-right img{
+  width: 100%;
 }
 
 #LoginContener{
@@ -220,7 +241,7 @@ input {
   flex-wrap: wrap;
   width: 100%;
   justify-content: center;
-  margin: 1em 0em;
+  margin: 1em;
 }
 
 .myacc-column{
@@ -229,6 +250,7 @@ input {
   flex-basis: 100%;
   flex: 1;
   text-align: center;
+  align-items: center;
 }
 
 .myacc-column-left {
@@ -246,7 +268,25 @@ input {
   flex-direction: column;
   justify-content: center;
   margin: 0em 1em;
+  align-items: center;
 }
+
+.myacc input{
+  background-color: transparent;
+  border-radius: 0px;
+  border: none;
+  border-bottom: black 1px solid;
+}
+
+.myacc button{
+  font-size: 1em;
+  border-radius: 10px;
+  background-color: #565656;
+  border: none;
+  color: white;
+  padding: 1em 2em;
+}
+
 #LoginContener div{
   background: #F2F2F2;
   border-radius: 10px;
@@ -408,6 +448,10 @@ input {
 }
 .Media:last-child{
   margin-bottom: 1em;
+}
+
+.Media a{
+  color: white;
 }
 
 

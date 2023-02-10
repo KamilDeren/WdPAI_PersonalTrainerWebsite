@@ -16,7 +16,6 @@
 
 <section class="header">
     <div class="logo">
-        <h2>Tutaj bedzie logo jakies moze czy cos</h2>
         <div class="login">
             <i class="fa-regular fa-user"></i>
             <?php if (empty($_SESSION['id'])) { ?>
@@ -32,9 +31,12 @@
 </section>
 
 <section id="NavBar">
-    <?php if (empty($_SESSION['id'])) { ?> <ul id="regular"> <?php } ?>
-        <?php if (!empty($_SESSION['id']) and (int)$_SESSION['id']!==1) { ?> <ul id="afterLoginNav1"> <?php } ?>
-            <?php if (!empty($_SESSION['id']) and (int)$_SESSION['id']==1) { ?> <ul id="afterLoginNav2"><?php } ?>
+    <?php if (empty($_SESSION['id'])) { ?>
+    <ul id="regular"> <?php } ?>
+        <?php if (!empty($_SESSION['id']) and (int)$_SESSION['id'] !== 1) { ?>
+        <ul id="afterLoginNav1"> <?php } ?>
+            <?php if (!empty($_SESSION['id']) and (int)$_SESSION['id'] == 1) { ?>
+            <ul id="afterLoginNav2"><?php } ?>
 
                 <li><a href="index">Strona Główna</a></li>
                 <li><a href="contact">Kontakt</a></li>
@@ -43,7 +45,7 @@
                 <?php if (!empty($_SESSION['id'])) { ?>
                     <li><a href="trainings">Treningi</a></li>
                 <?php } ?>
-                <?php if (!empty($_SESSION['id']) and (int)$_SESSION['id']==1) { ?>
+                <?php if (!empty($_SESSION['id']) and (int)$_SESSION['id'] == 1) { ?>
                     <li><a href="trainings">Dodaj trening</a></li>
                 <?php } ?>
             </ul>
@@ -57,11 +59,11 @@
         <div class='myacc-row'>
             <div class='myacc-column'>
                 <div class='myacc-column-left'>
-                    <input type="text" id="name" name="name" placeholder="Imie: <?= $myaccount->getName() ?>" disabled>
-                    <input type="text" id="name" name="name" placeholder="Nazwisko: <?= $myaccount->getSurname() ?>" disabled>
-                    <input type="text" id="name" name="name" placeholder="Email: <?= $myaccount->getEmail() ?>" disabled>
-                    <input type="text" id="name" name="name" placeholder="Numer telefonu: <?= $myaccount->getPhoneNumber() ?>" disabled>
-                    <input type="text" id="name" name="name" placeholder="Płeć: <?= $myaccount->getSex() ?>" disabled>
+                    <input type="text" id="name" name="name" placeholder="<?= $myaccount->getName() ?>" disabled>
+                    <input type="text" id="name" name="name" placeholder="<?= $myaccount->getSurname() ?>" disabled>
+                    <input type="text" id="name" name="name" placeholder="<?= $myaccount->getEmail() ?>" disabled>
+                    <input type="text" id="name" name="name" placeholder="<?= $myaccount->getPhoneNumber() ?>" disabled>
+                    <input type="text" id="name" name="name" placeholder="<?= $myaccount->getSex() ?>" disabled>
                 </div>
             </div>
             <div class='myacc-column'>
@@ -95,10 +97,10 @@
 
     <div class="Media">
         <p>Media Społecznościowe</p>
-        <i class="fa-brands fa-instagram"></i> instagram.in </br>
-        <i class="fa-brands fa-facebook"></i> facebook.fb </br>
-        <i class="fa-brands fa-youtube"></i> youtube.yt </br>
-        <i class="fa-brands fa-twitch"></i> twitch.tv </br>
+        <i class="fa-brands fa-instagram"></i> <a href="">instagram.in</a> </br>
+        <i class="fa-brands fa-facebook"></i> <a href="">facebook.fb </a></br>
+        <i class="fa-brands fa-youtube"></i> <a href="">youtube.yt</a> </br>
+        <i class="fa-brands fa-twitch"></i> <a href="">twitch.tv</a> </br>
     </div>
 </section>
 
