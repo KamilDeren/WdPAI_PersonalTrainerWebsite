@@ -14,18 +14,18 @@
 <section class="header">
     <div class="logo">
         <h2>Tutaj bedzie logo jakies moze czy cos</h2>
-            <div class="login">
-                <i class="fa-regular fa-user"></i>
-                <?php if(empty($_SESSION['id'])){?>
-                    <button><a href="login">Log In</a></button>
-                <?php }?>
+        <div class="login">
+            <i class="fa-regular fa-user"></i>
+            <?php if (empty($_SESSION['id'])) { ?>
+                <button><a href="login">Log In</a></button>
+            <?php } ?>
 
-                <?php if(!empty($_SESSION['id'])){?>
-                    <button><a href="myaccount">Moje konto</a></button>
-                <?php }?>
-            </div>
+            <?php if (!empty($_SESSION['id'])) { ?>
+                <button><a href="myaccount">Moje konto</a></button>
+                <button><a href="logout">Wyloguj się</a></button>
+            <?php } ?>
+        </div>
     </div>
-
 </section>
 
 <section id="NavBar">

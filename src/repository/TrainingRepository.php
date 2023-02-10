@@ -25,7 +25,8 @@ class TrainingRepository extends Repository
             $training['level'],
             $training['date'],
             $training['room'],
-            $training['run_by']
+            $training['run_by'],
+            $training['id_training']
         );
     }
 
@@ -34,15 +35,23 @@ class TrainingRepository extends Repository
         $result = [];
 
         $stmt = $this->database->connect()->prepare('
-            SELECT title, level, date, room, name, surname 
+            SELECT  id_training, 
+                    title, 
+                    level, 
+                    date, 
+                    room, 
+                    name, 
+                    surname 
             FROM trainings 
             JOIN users ON trainings.run_by = users.id_user
             WHERE date between ? and ?;
         ');
+
         $stmt->execute([
             date("Y-m-d h:m:s",time()),
             date("Y-m-d h:m:s",time()+604800)
         ]);
+
         $trainings = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         foreach ($trainings as $training) {
@@ -51,7 +60,8 @@ class TrainingRepository extends Repository
                 $training['level'],
                 $training['date'],
                 $training['room'],
-                $training['name'].' '.$training['surname']
+                $training['name'].' '.$training['surname'],
+                $training['id_training']
             );
         }
 
@@ -62,11 +72,17 @@ class TrainingRepository extends Repository
         $searchString = '%' . trim(strtolower($searchString)) . '%';
 
         $stmt = $this->database->connect()->prepare("
-            SELECT title, level, date, room, CONCAT(name,' ',surname) as run_by
+            SELECT id_training,
+                   title, 
+                   level, 
+                   date, 
+                   room, 
+                   CONCAT(name,' ',surname) as run_by
             FROM trainings
             JOIN users ON trainings.run_by = users.id_user
             WHERE LOWER(title) LIKE :search OR LOWER(CONCAT(name,' ',surname)) LIKE :search;
         ");
+
         $stmt->bindParam(':search', $searchString, PDO::PARAM_STR);
         $stmt->execute();
 
@@ -87,6 +103,34 @@ class TrainingRepository extends Repository
             $training->getRoom(),
             $training->getRunBy(),
             date("Y-m-d h:m:s",time())
+        ]);
+    }
+
+    public function signUpToTraining(int $id_selectedTraining){
+        session_start();
+
+        $stmt = $this->database->connect()->prepare('
+            INSERT INTO public.user_trainings(id_user,id_training) 
+            VALUES (?, ?)
+        ');
+
+        $stmt->execute([
+            (int)$_SESSION['id'],
+            $id_selectedTraining
+        ]);
+    }
+
+    public function withdrawFromTraining(int $id_selectedTraining){
+        session_start();
+
+        $stmt = $this->database->connect()->prepare('
+            DELETE FROM public.user_trainings
+            WHERE id_user = ? AND id_training = ?
+        ');
+
+        $stmt->execute([
+            (int)$_SESSION['id'],
+            $id_selectedTraining
         ]);
     }
 }

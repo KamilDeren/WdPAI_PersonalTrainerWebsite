@@ -44,4 +44,16 @@ class TrainingController extends AppController {
             echo json_encode($this->trainingRepository->getTrainingsByTitleOrRunby($decoded['search']));
         }
     }
+
+    public function signUpToTraining(int $id_selectedTraining)
+    {
+        $this->trainingRepository->signUpToTraining($id_selectedTraining);
+        http_response_code(200);
+
+    }
+
+    public function withdrawFromTraining(int $id_selectedTraining){
+        $this->trainingRepository->withdrawFromTraining($id_selectedTraining);
+        http_response_code(200);
+    }
 }

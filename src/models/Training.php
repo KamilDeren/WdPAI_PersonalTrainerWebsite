@@ -7,13 +7,19 @@ class Training {
     private $room;
     private $run_by;
 
-    public function __construct($title, $level, $date, $room, $run_by)
+    public function __construct($title, $level, $date, $room, $run_by, $id_training = NULL)
     {
         $this->title = $title;
         $this->level = $level;
         $this->date = $date;
         $this->room = $room;
         $this->run_by = $run_by;
+        $this->id_training = $id_training;
+    }
+
+    public function getIdTraining()
+    {
+        return $this->id_training;
     }
 
     public function getTitle()

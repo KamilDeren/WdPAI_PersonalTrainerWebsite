@@ -22,6 +22,7 @@
 
             <?php if (!empty($_SESSION['id'])) { ?>
                 <button><a href="myaccount">Moje konto</a></button>
+                <button><a href="logout">Wyloguj się</a></button>
             <?php } ?>
         </div>
     </div>
